@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Officer Verification</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .card {
+            background: white;
+            width: 92%;
+            max-width: 420px;
+            padding: 30px 25px 35px;
+            border-radius: 22px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .photo-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .photo-wrapper img {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 6px solid #1e88e5;
+            background: #f5f5f5;
+        }
+
+        h1 {
+            font-size: 26px;
+            margin: 12px 0 6px;
+            color: #222;
+        }
+
+        .psid {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 14px;
+        }
+
+        .info {
+            font-size: 18px;
+            margin: 6px 0;
+            color: #333;
+        }
+
+        .status {
+            margin-top: 18px;
+            padding: 12px;
+            border-radius: 14px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .active {
+            background: #e8f5e9;
+            color: #2e7d32;
+            border: 2px solid #2e7d32;
+        }
+
+        .inactive {
+            background: #ffebee;
+            color: #c62828;
+            border: 2px solid #c62828;
+        }
+
+        .footer {
+            margin-top: 18px;
+            font-size: 13px;
+            color: #777;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <div class="photo-wrapper">
+        <img src="{{ staff.photo }}" alt="Officer Photo">
+    </div>
+
+    <h1>{{ staff.name }}</h1>
+
+    <div class="psid">
+        <strong>PSID:</strong> {{ staff.psid }}
+    </div>
+
+    <div class="info">
+        <strong>Rank:</strong> {{ staff.rank }}
+    </div>
+
+    <div class="info">
+        <strong>Department:</strong> {{ staff.department }}
+    </div>
+
+    <div class="status {% if staff.status == 'ACTIVE' %}active{% else %}inactive{% endif %}">
+        STATUS: {{ staff.status }}
+    </div>
+
+    <div class="footer">
+        Verified via VGN Secure QR System
+    </div>
+
+</div>
+
+</body>
+</html>

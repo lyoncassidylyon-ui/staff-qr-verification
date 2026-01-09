@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>QR Generated</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #eef2f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,.25);
+        }
+        img.photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+        img.qr {
+            width: 250px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <img class="photo" src="{{ staff.photo }}">
+        <h2>{{ staff.name }}</h2>
+        <p>PSID: {{ staff.psid }}</p>
+        <img class="qr" src="{{ qr_url }}">
+    </div>
+</body>
+</html>

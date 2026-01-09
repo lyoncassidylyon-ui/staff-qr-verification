@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Staff QR Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .card {
+            background: white;
+            padding: 50px;
+            border-radius: 25px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+            text-align: center;
+            width: 450px;
+        }
+        .card img.photo {
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid #007BFF;
+            margin-bottom: 25px;
+        }
+        .card img.qr {
+            width: 250px;
+            height: 250px;
+            margin-top: 25px;
+        }
+        .card h1 {
+            margin: 10px 0;
+            font-size: 28px;
+            color: #333;
+        }
+        .card p {
+            margin: 8px 0;
+            font-size: 18px;
+            color: #555;
+        }
+        .status {
+            font-weight: bold;
+            color: green;
+        }
+        .inactive {
+            color: red;
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            font-size: 16px;
+            color: #007BFF;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <img class="photo" src="{{ staff.photo }}" alt="Staff Photo">
+        <h1>{{ staff.name }}</h1>
+        <p><strong>PSID:</strong> {{ staff.psid }}</p>
+        <p><strong>Rank:</strong> {{ staff.rank }}</p>
+        <p><strong>Department:</strong> {{ staff.department }}</p>
+        <p><strong>Status:</strong>
+            <span class="{{ 'inactive' if staff.status != 'ACTIVE' else 'status' }}">
+                {{ staff.status }}
+            </span>
+        </p>
+        <img class="qr" src="{{ qr_url }}" alt="QR Code">
+        <a href="/">Back to Home</a>
+    </div>
+</body>
+</html>

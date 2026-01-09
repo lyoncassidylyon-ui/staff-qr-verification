@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Verification</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #111;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .watermark {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.08;
+            background-image: repeating-linear-gradient(
+                45deg,
+                #000 0px,
+                #000 40px,
+                transparent 40px,
+                transparent 80px
+            );
+        }
+
+        .watermark-text {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-30deg);
+            font-size: 40px;
+            font-weight: bold;
+            color: #000;
+            opacity: 0.15;
+            white-space: nowrap;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .card {
+            position: relative;
+            z-index: 5;
+            max-width: 420px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 14px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(0,0,0,0.7);
+        }
+
+        img {
+            width: 140px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            margin: 10px 0;
+            color: #000;
+        }
+
+        .psid {
+            font-size: 22px;
+            font-weight: bold;
+            color: #0a7c2f;
+            margin: 10px 0 20px;
+        }
+
+        .info {
+            font-size: 15px;
+            margin: 6px 0;
+            color: #333;
+        }
+
+        .status {
+            margin-top: 15px;
+            padding: 8px;
+            font-weight: bold;
+            border-radius: 6px;
+            display: inline-block;
+        }
+
+        .ACTIVE {
+            background: #d4f7dd;
+            color: #0a7c2f;
+        }
+
+        .INACTIVE {
+            background: #f8d7da;
+            color: #a30000;
+        }
+
+        .warning {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #a30000;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="watermark"></div>
+
+<div class="watermark-text">
+    VGN • PSID {{ staff.staff_id }}
+</div>
+
+<div class="card">
+
+    <img src="{{ staff.photo }}" alt="Staff Photo">
+
+    <h2>{{ staff.name }}</h2>
+
+    <div class="psid">
+        PSID: {{ staff.staff_id }}
+    </div>
+
+    <div class="info"><strong>Rank:</strong> {{ staff.rank }}</div>
+    <div class="info"><strong>Department:</strong> {{ staff.department }}</div>
+
+    <div class="status {{ staff.status }}">
+        {{ staff.status }}
+    </div>
+
+    <div class="warning">
+        ⚠ Screenshot or duplication of this page is prohibited
+    </div>
+
+</div>
+
+</body>
+</html>

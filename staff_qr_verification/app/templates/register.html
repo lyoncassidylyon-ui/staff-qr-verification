@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Staff Registration | VGN</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: #111;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .container {
+        max-width: 380px;
+        margin: 40px auto;
+        background: #ffffff;
+        padding: 25px 22px;
+        border-radius: 14px;
+        box-shadow: 0 0 35px rgba(0,0,0,0.6);
+    }
+
+    .logo {
+        text-align: center;
+        margin-bottom: 12px;
+    }
+
+    .logo img {
+        width: 100px;
+    }
+
+    h2 {
+        text-align: center;
+        color: #000;
+        margin-bottom: 20px;
+    }
+
+    .field {
+        position: relative;
+        margin-bottom: 14px;
+    }
+
+    label {
+        color: #333;
+        font-size: 13px;
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    input {
+        width: 88%;
+        padding: 9px 30px 9px 10px;
+        border-radius: 6px;
+        border: 1px solid #bbb;
+        background: #fff;
+        color: #000;
+        font-size: 14px;
+    }
+
+    input:focus {
+        outline: none;
+        border-color: #0a7c2f;
+    }
+
+    .check {
+        position: absolute;
+        right: 10px;
+        top: 33px;
+        color: #0a7c2f;
+        font-size: 16px;
+        display: none;
+    }
+
+    input.valid + .check {
+        display: block;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        margin-top: 18px;
+        background: #0a7c2f;
+        border: none;
+        color: #fff;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background: #0c9b3c;
+    }
+
+    .note {
+        margin-top: 14px;
+        text-align: center;
+        font-size: 12px;
+        color: #555;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="logo">
+        <img src="/static/images/logo.png" alt="VGN Logo">
+    </div>
+
+    <h2>Staff Registration</h2>
+
+    <form method="post" enctype="multipart/form-data">
+
+        <div class="field">
+            <label>Full Name</label>
+            <input type="text" name="name" required>
+            <span class="check">✔</span>
+        </div>
+
+        <div class="field">
+            <label>PSID (8 Digits)</label>
+            <input type="text" name="psid" maxlength="8" required>
+            <span class="check">✔</span>
+        </div>
+
+        <div class="field">
+            <label>Rank</label>
+            <input type="text" name="rank" required>
+            <span class="check">✔</span>
+        </div>
+
+        <div class="field">
+            <label>Department</label>
+            <input type="text" name="department" required>
+            <span class="check">✔</span>
+        </div>
+
+        <div class="field">
+            <label>Passport Photograph (JPEG)</label>
+            <input type="file" name="photo" accept="image/jpeg" required>
+            <span class="check">✔</span>
+        </div>
+
+        <button type="submit">Register Staff</button>
+    </form>
+
+    <div class="note"><strong>©2026 * Vigilante Group of Nigeria * Officer's ID Verification</strong>  </div>
+
+</div>
+
+<script>
+    document.querySelectorAll("input").forEach(input => {
+        input.addEventListener("input", () => {
+            if (input.type === "file") {
+                input.classList.toggle("valid", input.files.length > 0);
+            } else if (input.name === "psid") {
+                input.classList.toggle("valid", /^\d{8}$/.test(input.value));
+            } else {
+                input.classList.toggle("valid", input.value.trim() !== "");
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
