@@ -1,8 +1,8 @@
 fastapi
 uvicorn
-jinja2
+gunicorn
 sqlalchemy
+jinja2
 python-multipart
 qrcode
 pillow
-requests
